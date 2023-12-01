@@ -1,0 +1,30 @@
+# Configuration file for Otchkies.
+
+pipeline:
+
+  input_stream:
+    name: realsense #C:\Users\jinr2.STUDENT\Software\input_streams\bag\walking.bag #realsense #webcam # /Users/jaime/Desktop/SwinDRLVP-staging/RealSense-videos-swin/20210303_162650.bag
+    archival_dir: E:\data
+
+  module_chain:
+
+    - name: Depth
+      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+      implementation: vision_processing.basic.Depth
+      kwargs:
+        kernel_size: 20
+        max: 2
+        min: 0.5
+        min_intensity: 80
+        power: 3
+        ground_removal: False
+        ground_mask: True
+        lower_hsv: [0, 0, 0] #[0, 0, 50]
+        upper_hsv: [180, 255, 50] #[255, 55, 175]
+
+
+  output_streams:
+#    - name: web
+#   - name: voice
+    - name: brainport
+    - name: window

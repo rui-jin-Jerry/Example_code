@@ -1,0 +1,29 @@
+# Configuration file for Otchkies.
+
+pipeline:
+
+  input_stream:
+    name: realsense
+    archival_dir: C:\Users\jinr2.STUDENT\data
+
+  module_chain:
+
+    - name: Depth
+      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+      implementation: vision_processing.basic.Depth
+      kwargs:
+        kernel_size: 64
+        max: 2
+        min: 0.5
+        min_intensity: 35
+        power: 3
+        ground_removal: False
+        ground_mask: True
+        lower_hsv: [ 0, 0, 0 ] #[0, 0, 50]
+        upper_hsv: [ 180, 255, 50 ] #[255, 55, 175]
+
+  output_streams:
+#    - name: web
+    - name: voice
+#    - name: brainport
+    - name: window

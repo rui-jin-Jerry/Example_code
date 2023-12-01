@@ -1,0 +1,24 @@
+# Configuration file for Otchkies.
+
+pipeline:
+
+  input_stream:
+    name: realsense
+    archival_dir: C:\Users\jinr2.STUDENT\data
+
+  module_chain:
+
+    - name: Intensity
+      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+      implementation: vision_processing.basic.Intensity
+      kwargs:
+        kernel_size: 64
+        clipping_distance: 2
+        lower_hsv: [0, 0, 0]
+        upper_hsv: [180, 255, 50]
+
+  output_streams:
+#    - name: web
+    - name: voice
+#    - name: brainport
+    - name: window

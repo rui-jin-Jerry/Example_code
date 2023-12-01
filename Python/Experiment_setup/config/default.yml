@@ -1,0 +1,123 @@
+# Default configuration file for Otchkies.
+#
+#   - input_stream: (required) one of ['webcam', 'realsense', 'path/to/bag_file.bag']
+#   - module_chain: (required, but can be empty) a list of module definitions
+#   - output_streams: a list including ['web', 'voice', 'brainport']
+#   - archival: (optional) if used, must specify exports_dir
+#
+# Author: @RuizSerra
+# Date:   20220913
+# Modified by @rui_jin_jerry
+# Data: 20221020
+pipeline:
+
+  input_stream:
+    name: realsense #E:\data\20230419-153137.bag #realsense #webcam # /Users/jaime/Desktop/SwinDRLVP-staging/RealSense-videos-swin/20210303_162650.bag
+    #archival_dir: E:\data
+
+  module_chain:
+
+#    - name: Self Attention
+#      path: C:\Users\jinr2.STUDENT\selfattention-main
+#      implementation: selfattention.ImageToPatches
+#      kwargs:
+#        top_k: 100
+
+#    - name: BW
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+#      implementation: vision_processing.basic.ToBlackAndWhite
+
+#    - name: Invert
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+#      implementation: vision_processing.basic.Invert
+
+#    - name: Gaussian Blur
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+#      implementation: vision_processing.basic.GaussianBlur
+#      kwargs:
+#        kernel_size: [5, 5]
+#        kernel_sigma: 2
+
+#    - name: Motion Detector
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies/
+#      implementation: vision_processing.motion_detection.singlemotiondetector.SingleMotionDetector
+#      kwargs:
+#        color: [0, 255, 0]
+#        accumWeight: 0.1
+#        frameCount: 32
+#
+#    - name: Depth2color
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+#      implementation: vision_processing.basic.Depth2color
+
+#    - name: face_detection
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies/
+#      implementation: vision_processing.face_detection.face_detection_yunet
+
+#    - name: object_detection
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies/
+#      implementation: vision_processing.object_detection.object_detection
+
+#    - name: Calibration_AOV
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+#      implementation: vision_processing.basic.Calibration_AOV
+
+    - name: Calibration_Threshold
+      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+      implementation: vision_processing.basic.Calibration_Threshold
+      kwargs:
+        intensity: 0
+        all_white: False
+
+#    - name: Intensity
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+#      implementation: vision_processing.basic.Intensity
+#      kwargs:tttt
+#        kernel_size: 64
+#        clipping_distance: 2
+#        lower_hsv: [0, 0, 0]
+#        upper_hsv: [180, 255, 50]
+#
+#    - name: Depth
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+#      implementation: vision_processing.basic.Depth
+#      kwargs:
+#        kernel_size: 64
+#        max: 2
+#        min: 0.5
+#  tt      min_intensity: 10
+#        power: 3
+#        ground_removal: False
+#        ground_mask: True
+#        lower_hsv: [0, 0, 0] #[0, 0, 50]
+#        upper_hsv: [180, 255, 50] #[255, 55, 175]io
+
+  output_streams:
+#    - name: web
+    - name: voice
+#    - name: brainport
+    - name: window
+
+
+# TODO: ADD real-time trigger reminder in viewing window
+
+# TODO: Recording the camera when the obstacle size in 2 meters to decide the calibration obstacle size
+# TODO: Add timestamp to the synch signal for post-processing and if possible to add more types of trigger
+
+#TODO the processing lag is related to the headphone output channel choose the stereo
+#TODO Intro the voice with detail about always left to right;we can apply a special warning "audio and tactile" when we are within certain
+#TODO reach (50cm); the scale of depth should be dependent on the distance; suddenly appear at 1.5m and linear from 1.5m to 0.5m and fully
+#TODO max it for specially warning; should always reminder participant to scanning and what they "see" is actually came from the camera
+
+#TODO Tell participants the mode before each trial
+#TODO Getting a small backpack
+#TODO Defining the invalid trial and repeat them once in the end
+#TODO make sign when mute and unmute
+
+#TODO: Clean up the code and make a sperate file script for the button function
+
+#TODO using tickint to create small buttons for control global variables
+#TODO and mark the image with the information needed like the mute and the mode using
+#TODO add mode for cane only condition
+
+#TODO add a cane only mode

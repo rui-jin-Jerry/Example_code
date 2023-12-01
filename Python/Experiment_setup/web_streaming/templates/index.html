@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥽</text></svg>">
+    <title>otchkies</title>
+    <style>
+
+      @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+      html, body
+      {
+          height: 100%;
+          margin:0;
+          padding:0;
+          background-color: #222324;
+          color: #ffffff;
+      }
+      h1 {
+          text-align: center;
+          padding-top: 50px;
+          font-family: 'Roboto Mono', monospace;
+      }
+      .center {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          //height: 200px;
+          //border: 3px solid green;
+      }
+      img {
+          padding-top: 50px;
+      }
+      form {
+          padding-top: 80px;
+          font-family: 'Roboto Mono', monospace;
+      }
+      input[type='submit']:focus {
+          outline: 0;
+          box-shadow: 0 0 2px 2px #555;
+          border-color: red !important;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🥽 Otchkies</h1>
+    <div class="center">
+      <img src="{{ url_for('video_feed') }}">
+    </div>
+    <div class="center">
+      <form method="post" action="/">
+        <input type="submit" value="Refresh config" name="refresh_config"/>
+        <input type="submit" value="Calibration_AOV" name="Calibration_AOV"/>
+        <input type="submit" value="Calibration_Threshold" name="Calibration_Threshold"/>
+        <input type="submit" value="vOICe_Intensity" name="vOICe_Intensity"/>
+        <input type="submit" value="vOICe_Depth" name="vOICe_Depth"/>
+        <input type="submit" value="BrainPort_Intensity" name="BrainPort_Intensity"/>
+        <input type="submit" value="BrainPort_Depth" name="BrainPort_Depth"/>
+        <input type="submit" value="Face" name="Face"/>
+        <input type="submit" value="Mute" name="Mute"/>
+        <input type="submit" value="Unmute" name="Unmute"/>
+      </form>
+    </div>
+  </body>
+</html>

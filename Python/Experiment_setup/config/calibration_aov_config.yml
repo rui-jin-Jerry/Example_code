@@ -1,0 +1,20 @@
+# Default configuration file for Otchkies.
+
+pipeline:
+
+  input_stream:
+    name: realsense #C:\Users\jinr2.STUDENT\data\20230228-131609.bag #C:\Users\jinr2.STUDENT\data\data.bag #realsense #webcam # /Users/jaime/Desktop/SwinDRLVP-staging/RealSense-videos-swin/20210303_162650.bag
+    #archival_dir: C:\Users\jinr2.STUDENT\data
+
+  module_chain:
+
+    - name: Calibration_AOV
+      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+      implementation: vision_processing.basic.Calibration_AOV
+
+
+  output_streams:
+#    - name: web
+#    - name: voice
+#    - name: brainport
+    - name: window

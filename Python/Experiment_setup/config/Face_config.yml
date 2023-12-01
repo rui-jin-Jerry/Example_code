@@ -1,0 +1,82 @@
+# Configuration file for Otchkies.
+
+pipeline:
+
+  input_stream:
+    name: webcam #C:\Users\jinr2.STUDENT\Software\input_streams\bag\walking.bag #realsense #webcam # /Users/jaime/Desktop/SwinDRLVP-staging/RealSense-videos-swin/20210303_162650.bag
+    #archival_dir: C:\Users\jinr2.STUDENT\data
+
+  module_chain:
+
+#    - name: Self Attention
+#      path: C:\Users\jinr2.STUDENT\selfattention-main
+#      implementation: selfattention.ImageToPatches
+#      kwargs:
+#        top_k: 100
+
+#    - name: BW
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+#      implementation: vision_processing.basic.ToBlackAndWhite
+
+#    - name: Invert
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+#      implementation: vision_processing.basic.Invert
+
+#    - name: Gaussian Blur
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+#      implementation: vision_processing.basic.GaussianBlur
+#      kwargs:
+#        kernel_size: [5, 5]
+#        kernel_sigma: 2
+
+#    - name: Motion Detector
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies/
+#      implementation: vision_processing.motion_detection.singlemotiondetector.SingleMotionDetector
+#      kwargs:
+#        color: [0, 255, 0]
+#        accumWeight: 0.1
+#        frameCount: 32
+#
+#    - name: Depth2color
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+#      implementation: vision_processing.basic.Depth2color
+
+    - name: face_detection
+      path: /Users/jaime/Documents/SwinDRLVP/otchkies/
+      implementation: vision_processing.face_detection.face_detection_yunet
+
+#    - name: object_detection
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies/
+#      implementation: vision_processing.object_detection.object_detection
+
+#    - name: Calibration_AOV
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+#      implementation: vision_processing.basic.Calibration_AOV
+
+#    - name: Calibration_Threshold
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+#      implementation: vision_processing.basic.Calibration_Threshold
+
+#    - name: Intensity
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+#      implementation: vision_processing.basic.Intensity
+#      kwargs:
+#        kernel_size: 64
+#        clipping_distance: 2
+#        lower_hsv: [0, 0, 0]
+#        upper_hsv: [180, 255, 50]
+
+#    - name: Depth
+#      path: /Users/jaime/Documents/SwinDRLVP/otchkies
+#      implementation: vision_processing.basic.Depth
+#      kwargs:
+#        kernel_size: 64
+#        max: 1.5
+#        min: 0.3
+#        power: 0.5
+#        clipping_distance: 2
+
+  output_streams:
+    - name: web
+    - name: voice
+#    - name: brainport
